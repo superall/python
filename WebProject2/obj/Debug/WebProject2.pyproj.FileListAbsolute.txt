@@ -1,0 +1,13 @@
+E:\study\python\WebProject1\WebProject2\WebProject2\bin\Microsoft.PythonTools.WebRole.dll
+E:\study\python\WebProject1\WebProject2\WebProject2\obj\Debug\attach_server.py
+E:\study\python\WebProject1\WebProject2\WebProject2\obj\Debug\visualstudio_py_debugger.py
+E:\study\python\WebProject1\WebProject2\WebProject2\obj\Debug\visualstudio_py_repl.py
+E:\study\python\WebProject1\WebProject2\WebProject2\obj\Debug\visualstudio_py_util.py
+E:\study\python\WebProject1\WebProject2\WebProject2\obj\Debug\__init__.py
+E:\study\python\WebProject1\WebProject2\WebProject2\obj\Debug\__main__.py
+E:\study\python\WebProject1\WebProject2\WebProject2\bin\AzureSetup.cfg
+E:\study\python\WebProject1\WebProject2\WebProject2\bin\Microsoft.PythonTools.AzureSetup.exe
+E:\study\python\WebProject1\WebProject2\WebProject2\bin\Microsoft.PythonTools.AzureSetup.exe.config
+E:\study\python\WebProject1\WebProject2\WebProject2\bin\wfastcgi.py
+E:\study\python\WebProject1\WebProject2\WebProject2\obj\Debug\web.config
+E:\study\python\WebProject1\WebProject2\WebProject2\obj\Debug\web.debug.config
