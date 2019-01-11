@@ -15,27 +15,31 @@ class HuoChe(object):
       executable_path=''  
       #用户名 密码  
       username = u"superall"  
-      passwd = u"huochepiao1"  
+      passwd = u"*******"  
       #cookies值自己找   
-      # 天津%u5929%u6D25%2CTJP 南昌%u5357%u660C%2CNCG 桂林%u6842%u6797%2CGLZ  
-      starts = u"%u5929%u6D25%2CTJP"  
-      ends = u"%u5357%u660C%2CNCG"  
+      # 天津%u5929%u6D25%2CTJP 南昌%u5357%u660C%2CNCG 桂林%u6842%u6797%2CGLZ  武汉%u6B66%u6C49%2CWHN 上海%u4E0A%u6D77%2CSHH 长沙%u957F%u6C99%2CCSQ
+      starts = u"%u957F%u6C99%2CCSQ"  
+      ends = u"%u4E0A%u6D77%2CSHH"  
       #时间格式2018-02-05  
-      dtime = u"2018-05-05"  
+      dtime = u"2019-01-15"  
       #车次,选择第几趟,0则从上之下依次点击  
-      order = 0  
+      order = 10  
       ###乘客姓名  
-      users=[u'周小云']  
+      users=[u'梅瑜华']  
+      users_child=[u'周小云']  
       ##席位  
       xb=u"二等座"  
       pz=u"成人票"  
+      ##预定车次  
+      tripIDs=[u'G1279',u'G1279']  
       """网址"""  
       #12306查询URL  
-      ticket_url = "https://kyfw.12306.cn/otn/leftTicket/init"  
+      #ticket_url = "https://kyfw.12306.cn/otn/leftTicket/init"  
+      ticket_url = "https://kyfw.12306.cn/otn/leftTicket/init?linktypeid=dc"  
       #12306登录URL  
       login_url = "https://kyfw.12306.cn/otn/login/init"  
       #我的12306URL  
-      initmy_url = "https://kyfw.12306.cn/otn/index/initMy12306"  
+      initmy_url = "https://kyfw.12306.cn/otn/view/index.html"  
       #购票URL  
       buy="https://kyfw.12306.cn/otn/confirmPassenger/initDc"  
       login_url='https://kyfw.12306.cn/otn/login/init'  
@@ -76,7 +80,7 @@ class HuoChe(object):
               count = 0  
               if self.order != 0:  
                   while self.driver.url == self.ticket_url:  
-                      self.driver.find_bytext(u"查询").click()  
+                      self.driver.find_by_text(u"查询").click()  
                       count += 1  
                       print("循环点击查询.... 第 %s 次"%count)  
                       #sleep(1)  
@@ -85,6 +89,7 @@ class HuoChe(object):
                       except Exception as e:  
                           print(e)  
                           print("还没开始预订")  
+                          sleep(1)  
                           continue  
               else :  
                   while self.driver.url == self.ticket_url:  
@@ -99,6 +104,7 @@ class HuoChe(object):
                       except Exception as e:  
                           print(e)  
                           print("还没开始预订 %s "%count)  
+                          sleep(1)  
                           continue  
               print("开始预订....")  
               #sleep(1)  
@@ -107,6 +113,18 @@ class HuoChe(object):
               print("开始选择用户....")  
               for user in self.users:  
                   self.driver.find_by_text(user).last.click()  
+              for user_child in self.users_child:  
+                  self.driver.find_by_text(user_child).last.click()  
+                  sleep(1) 
+                  try: 
+                      self.driver.find_by_text(u'添加儿童票').last.click()
+                  except Exception as e:  
+                      print(e)  
+                  try: 
+                      self.driver.find_link_by_text(u'添加儿童票').last.click()
+                  except Exception as e:  
+                      print(e)  
+
               print("提交订单....")  
               sleep(1)  
               # self.driver.find_by_text(self.pz).click()  
@@ -128,7 +146,10 @@ class HuoChe(object):
 cities={  
   '天津':'%u5929%u6D25%2CTJP',  
   '南昌':'%u5357%u660C%2CNCG',  
-  '桂林':'%u6842%u6797%2CGLZ'  
+  '桂林':'%u6842%u6797%2CGLZ',  
+  '武汉':'%u6B66%u6C49%2CWHN',  
+  '上海':'%u4E0A%u6D77%2CSHH', 
+  '长沙':'%u957F%u6C99%2CCSQ'  
   }  
     
 if __name__=="__main__":  
